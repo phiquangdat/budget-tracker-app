@@ -13,7 +13,7 @@ function App() {
         <div id="balance"></div>
       </div>
       <TransactionForm list={list} setList={setList} />
-      <TransactionList list={list} />
+      <TransactionList list={list} setList={setList} />
       {/* <div>
         <canvas id="myChart"></canvas>
       </div> */}
