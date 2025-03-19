@@ -1,4 +1,4 @@
-export default function () {
+export default function Transaction({ index, item, handleDelete }) {
   return (
     <li key={index} className={item.sum > 0 ? "income" : "expense"}>
       <p className="description">{item.description}</p>

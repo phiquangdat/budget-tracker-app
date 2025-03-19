@@ -1,15 +1,17 @@
 import { useState } from "react";
-export default function TransactionForm({ list, setList }) {
+export default function TransactionForm({ setList, setAmount }) {
   const [description, setDescription] = useState("");
-  const [sum, setSum] = useState("");
+  const [sum, setSum] = useState(0);
   function handleSubmit(e) {
     e.preventDefault();
     const data = {
       description: description,
-      sum: sum,
+      sum: Number(sum),
     };
+
     setList((prevData) => [...prevData, data]);
-    console.log(list);
+    setAmount((prevSum) => prevSum + data.sum);
+
     setDescription("");
     setSum("");
   }
@@ -21,8 +23,8 @@ export default function TransactionForm({ list, setList }) {
           type="text"
           id="description"
           name="description"
-          value={description}
           placeholder="Example: S-market"
+          value={description}
           required
           onChange={(curr) => {
             setDescription(curr.target.value);
