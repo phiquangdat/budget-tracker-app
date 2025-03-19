@@ -4,7 +4,9 @@ import TransactionList from "./component/TransactionList/TransactionList";
 import TransactionForm from "./component/TransactionForm";
 function App() {
   const [list, setList] = useState([]);
+
   const [amount, setAmount] = useState(0.0);
+
   return (
     <div className="container">
       <h1>Budget tracker</h1>
@@ -13,7 +15,7 @@ function App() {
         <div id="balance">{amount} €</div>
       </div>
       <TransactionForm setAmount={setAmount} setList={setList} />
-      <TransactionList list={list} setList={setList} />
+      <TransactionList setAmount={setAmount} list={list} setList={setList} />
       {/* <div>
         <canvas id="myChart"></canvas>
       </div> */}

@@ -1,13 +1,13 @@
 import "./TransactionList.css";
 import Transaction from "../Transaction";
-export default function TransactionList({ list, setList }) {
-  function handleDelete(e) {
+export default function TransactionList({ list, setAmount, setList }) {
+  function handleDelete(item, sum) {
     const updatedList = list.filter((_, index) => {
-      return index !== e;
+      return index !== item;
     });
+    setAmount((prev) => prev - sum);
     setList(updatedList);
   }
-
   return (
     <div>
       <h3>Transactions</h3>
