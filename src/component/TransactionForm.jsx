@@ -15,6 +15,7 @@ export default function TransactionForm({ setList, setAmount }) {
     setDescription("");
     setSum("");
   }
+  
   return (
     <>
       <form onSubmit={handleSubmit}>
