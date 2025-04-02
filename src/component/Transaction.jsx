@@ -6,7 +6,10 @@ export default function Transaction({ item, handleDelete }) {
     >
       <p className="description">{item.description}</p>
       <p className="sum">{item.sum} €</p>
-      <button className="delete" onClick={() => handleDelete(item, item.sum)}>
+      <button
+        className="delete"
+        onClick={() => handleDelete(item.description, item.sum)}
+      >
         Poista
       </button>
     </li>

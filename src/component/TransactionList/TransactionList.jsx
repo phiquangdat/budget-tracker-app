@@ -1,22 +1,18 @@
 import "./TransactionList.css";
 import { useState } from "react";
+import BudgetAppProvider, {
+  BudgetAppContext,
+} from "../../context/BudgetAppContext";
 import Transaction from "../Transaction";
 import Confirmation from "../Confirmation/Confirmation";
 export default function TransactionList({ list, setAmount, setList }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
-
-  const handleDelete = async (item, sum) => {
-    try {
-      setShowConfirmation(true);
-      let updatedList = list.filter((i) => {
-        return i !== item;
-      });
-
-      setAmount((prev) => prev - sum);
-      setList(updatedList);
-    } catch (error) {
-      console.log(error);
-    }
+  const { state, dispatch } = useContext(BudgetAppContext);
+  const handleDelete = async (description, sum) => {
+    dispatch({
+      type: "delete_transaction",
+      payload: { description: description, amount: sum },
+    });
   };
 
   return (
